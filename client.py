@@ -1,6 +1,6 @@
 from socket import *
-
-HOST = '128.2.220.11'
+# angelshark: '128.2.220.11'
+HOST = '127.0.0.1'
 PORT = 21567
 BUFSIZ = 1024
 ADDR = (HOST,PORT)
