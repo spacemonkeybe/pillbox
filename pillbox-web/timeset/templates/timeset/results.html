@@ -1,0 +1,9 @@
+<h1>{{ patient.patient_name }}</h1>
+
+<ul>
+{% for medicine in patient.medicine_set.all %}
+    <li>{{ medicine.medicine_text }} -- {{ medicine.time }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'timeset:detail' patient.id %}">Set again?</a>
