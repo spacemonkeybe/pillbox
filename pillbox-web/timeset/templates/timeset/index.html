@@ -1,5 +1,5 @@
 <ul>
 {% for patient in patient_list %}
-    <li><a href="{% url 'timeset:detail' patient.id %}">{{ patient.patient_name }}</a></li>
+    <li><a href="{% url 'timeset:results' patient.id %}">{{ patient.patient_name }}</a></li>
 {% endfor %}
 </ul>

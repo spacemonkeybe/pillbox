@@ -4,25 +4,27 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Patient
 from django.urls import reverse
+from django.views import generic
 
-def index(request):
-	patient_list = Patient.objects.order_by('patient_name')[:]
-	context = {'patient_list': patient_list}
-	return render(request, 'timeset/index.html', context)
+class IndexView(generic.ListView):
+	template_name = 'timeset/index.html'
+	context_object_name = 'patient_list'
+	def get_queryset(self):
+		return Patient.objects.all()
 
-def detail(request, patient_id):
-	patient = get_object_or_404(Patient, pk=patient_id)
-	return render(request, 'timeset/detail.html', {'patient': patient})
+class ResultsView(generic.DetailView):
+	model = Patient
+	template_name = 'timeset/results.html'
 
-def results(request, patient_id):
-	patient = get_object_or_404(Patient, pk=patient_id)
-	return render(request, 'timeset/results.html', {'patient': patient})
+class SettingView(generic.DetailView):
+	model = Patient
+	template_name = 'timeset/setting.html'
 
-def setting(request, patient_id):
+def set(request, patient_id):
 	patient = get_object_or_404(Patient, pk=patient_id)
 	for index, medicine in enumerate(patient.medicine_set.all()):
 		s = "medicine"+str(index+1)

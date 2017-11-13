@@ -3,8 +3,8 @@ from . import views
 
 app_name = 'timeset'
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
-	url(r'^(?P<patient_id>[0-9]+)/$', views.detail, name='detail'),
-	url(r'^(?P<patient_id>[0-9]+)/results/$', views.results, name='results'),
-	url(r'^(?P<patient_id>[0-9]+)/setting/$', views.setting, name='setting'),
+	url(r'^$', views.IndexView.as_view(), name='index'),
+	url(r'^(?P<pk>[0-9]+)/$', views.ResultsView.as_view(), name='results'),
+	url(r'^(?P<pk>[0-9]+)/setting$', views.SettingView.as_view(), name='setting'),
+	url(r'^(?P<patient_id>[0-9]+)/set/$', views.set, name='set'),
 ]

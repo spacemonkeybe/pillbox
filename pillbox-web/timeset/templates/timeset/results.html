@@ -6,4 +6,5 @@
 {% endfor %}
 </ul>
 
-<a href="{% url 'timeset:detail' patient.id %}">Set again?</a>
+<a href="{% url 'timeset:setting' patient.id %}">Set time?</a><br/>
+<a href="{% url 'timeset:index' %}">Back to all patients?</a>
