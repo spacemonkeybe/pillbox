@@ -11,7 +11,10 @@ from .models import Patient, Medicine
 	
 class MedicineAdmin(admin.ModelAdmin):
 	list_display = ('patient', 'medicine_text', 'time')
-	
+	list_filter = ('patient', 'medicine_text')
+	# search_fields = ('patient', 'medicine_text')
+	# prepopulated_fields = {'slug':('medicine_text',)}
+	# raw_id_fields = ('patient',)
 admin.site.register(Patient)
 admin.site.register(Medicine, MedicineAdmin)
 
