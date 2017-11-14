@@ -10,7 +10,7 @@ from .models import Patient
 from django.urls import reverse
 from django.views import generic
 
-ip = '127.0.0.1'
+global ip
 from socket import *
 class IndexView(generic.ListView):
 	template_name = 'timeset/index.html'
@@ -30,6 +30,7 @@ def Login(request):
     return render(request, 'timeset/login.html')
     
 def setip(request):
+	global ip
 	ip = request.META.get('REMOTE_ADDR')
 	print ip
 	return HttpResponse(ip) 
@@ -40,7 +41,9 @@ def set(request, patient_id):
 		s = "medicine"+str(index+1)
 		medicine.time = request.POST[s]
 		medicine.save()
+		global ip
 		HOST = ip
+		print 'HOST', HOST
 		PORT = 21567
 		BUFSIZ = 1024
 		ADDR = (HOST,PORT)
