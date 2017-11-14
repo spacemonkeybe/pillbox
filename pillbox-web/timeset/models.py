@@ -15,3 +15,9 @@ class Medicine(models.Model):
 	time = models.TimeField()
 	def __str__(self):
 		return self.medicine_text
+		
+class Pi(models.Model):
+	patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+	Pi_ip = models.GenericIPAddressField()
+	def __str__(self):
+		return self.Pi_ip
