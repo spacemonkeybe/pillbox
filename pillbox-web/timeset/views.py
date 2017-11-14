@@ -47,10 +47,13 @@ def set(request, patient_id):
 		PORT = 21567
 		BUFSIZ = 1024
 		ADDR = (HOST,PORT)
+		print 'ADDR', ADDR
 		tcpCliSock = socket(AF_INET,SOCK_STREAM)
+		print 'tcpCliSock', tcpCliSock
 		tcpCliSock.connect(ADDR)
-
+		print 'connected'
 		tcpCliSock.send(medicine.time)
+		print 'finish'
 	#message = tcpCliSock.recv(BUFSIZ)
 	return HttpResponseRedirect(reverse('timeset:results', args=(patient.id,)))
 	
