@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import Patient
 from django.urls import reverse
