@@ -24,6 +24,9 @@ class SettingView(generic.DetailView):
 	model = Patient
 	template_name = 'timeset/setting.html'
 
+def Login(request):
+    return render(request, 'timeset/login.html')
+
 def set(request, patient_id):
 	patient = get_object_or_404(Patient, pk=patient_id)
 	for index, medicine in enumerate(patient.medicine_set.all()):
